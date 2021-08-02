@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 	int serv_sock, clnt_sock;
 	char message[BUF_SIZE];
 	int *number;
-	int i, str_len, cal;
+	int i, j, str_len, cal;
 	char ret[BUF_SIZE];
 
 	struct sockaddr_in serv_adr, clnt_adr;
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 
 	clnt_adr_sz = sizeof(clnt_adr);
 
-	for (int i = 0; i < 5; i++)
+	for (i = 0; i < 5; i++)
 	{
 		clnt_sock = accept(serv_sock,  (struct sockaddr*)&clnt_adr, &clnt_adr_sz);
 		if (clnt_sock == -1)
@@ -56,17 +56,17 @@ int main(int argc, char *argv[])
 		number = get_num(message, str_len - 1);
 		cal = number[1];
 		if (message[str_len - 2] == '+')
-			for (i = 2; i <= number[0]; i++)
-				cal += number[i];
+			for (j = 2; j <= number[0]; j++)
+				cal += number[j];
 		else if (message[str_len - 2] == '-')
-			for (i = 2; i <= number[0]; i++)
-				cal -= number[i];
+			for (j = 2; j <= number[0]; j++)
+				cal -= number[j];
 		else if (message[str_len - 2] == '*')
-			for (i = 2; i <= number[0]; i++)
-				cal *= number[i];
+			for (j = 2; j <= number[0]; j++)
+				cal *= number[j];
 		else if (message[str_len - 2] == '/')
-			for (i = 2; i <= number[0]; i++)
-				cal /= number[i];
+			for (j = 2; j <= number[0]; j++)
+				cal /= number[j];
 		sprintf(ret, "%d", cal);
 		printf("ret : %d\n", cal);
 		write(clnt_sock, ret, strlen(ret));
