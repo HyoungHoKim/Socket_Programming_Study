@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 			0, (struct sockaddr*)&mul_adr, sizeof(mul_adr));
 		sleep(2);
 	}
-	close(fp);
+	fclose(fp);
 	close(send_sock);
 	return 0;
 }
