@@ -29,7 +29,6 @@ int main(int argc, char *argv[])
 	if (bind(recv_sock, (struct sockaddr *)&adr, sizeof(adr)) == -1)
 		error_handling("bind() error");
 
-	setsockopt(recv_sock, IPPROTO_IP, IP_ADD_MEMBERSHIP, (void*)&join_adr, sizeof(join_adr));
 
 	while(1)
 	{
