@@ -48,6 +48,7 @@ int main(int argc, char *argv[])
 		recv_len = 0;
 		while (recv_len < str_len)
 		{
+			printf("read\n");
 			recv_cnt = read(sock, &message[recv_len], BUF_SIZE - 1);
 			if (recv_cnt == -1)
 				error_handling("read() error!");
